@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Elysium International Highschool</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+        /* --- DESKTOP FIRST STYLES --- */
+        
+        /* Hero khusus halaman About */
+        .about-hero {
+            height: 60vh;
+            background: linear-gradient(to bottom, rgba(20,30,48,0.8), rgba(20,30,48,0.9)), 
+                        url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px; /* Tambah padding agar teks tidak mentok pinggir */
+            margin-top: 60px; /* Kompensasi untuk Navbar yang Fixed */
+        }
+        
+        .about-hero h1 { 
+            font-size: 3.5rem; 
+            color: #fff; 
+            margin-bottom: 10px; 
+            line-height: 1.2;
+        }
+        
+        .breadcrumb { 
+            color: #00d2ff; 
+            font-weight: 600; 
+            letter-spacing: 3px; 
+            font-size: 0.9rem;
+            display: block; /* Agar baris baru */
+            margin-bottom: 15px;
+        }
+
+        /* Styling Profil Kepala Sekolah */
+        .principal-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .principal-img img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #00d2ff;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+        }
+        
+        .quote { 
+            font-style: italic; 
+            color: #ddd; 
+            font-size: 1.1rem; 
+            border-left: 3px solid #00d2ff; 
+            padding-left: 20px; 
+            margin: 20px 0; 
+            line-height: 1.6;
+        }
+
+        /* --- MOBILE RESPONSIVE FIX (Bagian yang diperbaiki) --- */
+        @media (max-width: 768px) {
+            /* 1. Perbaiki Hero di HP */
+            .about-hero {
+                height: 50vh; /* Tinggi dikurangi sedikit agar pas */
+                margin-top: 0; /* Reset margin karena navbar mobile beda handling */
+                padding-top: 60px; /* Beri jarak dari atas supaya tidak tertutup navbar */
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem; /* Ukuran font dikecilkan dari 3.5rem */
+            }
+
+            .breadcrumb {
+                font-size: 0.8rem;
+                letter-spacing: 2px;
+            }
+
+            /* 2. Perbaiki Bagian Vision & Mission */
+            .about-text h1 {
+                font-size: 2rem !important; /* Paksa font judul section jadi lebih kecil */
+                line-height: 1.3;
+            }
+            
+            .about-text h2 {
+                font-size: 1.2rem !important; /* Judul kecil (OUR VISION) */
+            }
+
+            /* 3. Perbaiki Profil Kepala Sekolah di HP */
+            .principal-section { 
+                flex-direction: column; 
+                text-align: center; 
+                padding: 30px 20px;
+            }
+            
+            .principal-img img {
+                width: 150px; /* Foto lebih kecil */
+                height: 150px;
+            }
+
+            .quote { 
+                border-left: none; 
+                border-top: 3px solid #00d2ff; 
+                padding-top: 20px; 
+                padding-left: 0; 
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <div class="logo">
+                    <img src="../assets/images/logo-kecil.png" alt="Logo"> 
+                    <div class="logo-text">
+                        <span>ELYSIUM</span>
+                        <small>INTERNATIONAL</small>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">HOME</a></li>
+                    <li><a href="../index.html#academics">ACADEMICS</a></li>
+                    <li><a href="about.html" class="active">ABOUT</a></li> <li><a href="admission.html">ADMISSION</a></li>          
+                    <li><a href="gallery.html">GALLERY</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <div data-aos="fade-up">
+            <span class="breadcrumb">WHO WE ARE</span>
+            <h1>Tentang Elysium</h1>
+            <p style="color: #ccc;">Membangun peradaban masa depan melalui pendidikan.</p>
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container about-container">
+            <div class="about-text" data-aos="fade-right">
+                <h2 style="color: #00d2ff;">OUR VISION</h2>
+                <h1 style="margin-bottom: 20px;">The Future of Education</h1>
+                <p>Elysium International High School bukan sekadar sekolah, melainkan inkubator bagi para pemimpin masa depan. Kami percaya bahwa teknologi dan kemanusiaan harus berjalan beriringan.</p>
+                
+                <h3 style="color: #fff; margin-top: 20px;">Misi Kami:</h3>
+                <ul style="margin-left: 20px; color: #ccc; margin-top: 10px; line-height: 1.8;">
+                    <li>Menciptakan kurikulum adaptif berbasis Artificial Intelligence.</li>
+                    <li>Membangun karakter siswa yang berintegritas dan berwawasan global.</li>
+                    <li>Menyediakan fasilitas riset setara universitas bagi siswa SMA.</li>
+                </ul>
+            </div>
+            <div class="about-img" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1600&auto=format&fit=crop" alt="Campus Life">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad bg-darker">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>CORE VALUES</h2>
+                <p>Nilai-nilai yang menjadi pondasi pendidikan kami</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>Innovation</h3>
+                    <p>Selalu berinovasi dengan teknologi terbaru dalam metode pembelajaran.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-globe-asia"></i></div>
+                    <h3>Global Mindset</h3>
+                    <p>Mempersiapkan siswa untuk bersaing dan berkolaborasi di tingkat internasional.</p>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>Integrity</h3>
+                    <p>Kecerdasan tanpa moral adalah kehancuran. Kami menjunjung tinggi etika.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container">
+            <div class="principal-section" data-aos="zoom-in">
+                <div class="principal-img">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Principal">
+                </div>
+                <div class="principal-text">
+                    <h2 style="color: #00d2ff;">Prof. Dr. Alexander Nexus</h2>
+                    <small style="color: #aaa; text-transform: uppercase; letter-spacing: 1px;">Head of School</small>
+                    <div class="quote">
+                        "Di Elysium, kami tidak bertanya 'ingin jadi apa kamu nanti?', tetapi 'masalah apa yang ingin kamu selesaikan di masa depan?'. Kami menyiapkan solusi untuk dunia yang belum tercipta."
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Signature_sample.svg/1200px-Signature_sample.svg.png" style="height: 40px; filter: invert(1); opacity: 0.7;" alt="Signature">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>ELYSIUM INTERNATIONAL HIGHSCHOOL</h3>
+                <p>Jl. Antariksa No. 99, Jakarta</p>
+                <p>Phone: +62 895-1929-9897</p>
+            </div>
+            <div class="footer-col">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="../index.html#academics">Academics</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Socials</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 Elysium International Highschool.</div>
+    </footer>
+
+    <div class="scroll-up-btn" id="scrollToTop"><i class="fas fa-chevron-up"></i></div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script src="../assets/js/script.js"></script>
+
+</body>
+</html>

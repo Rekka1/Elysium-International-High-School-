@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission | Elysium International Highschool</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- KHUSUS HALAMAN ADMISSION --- */
+        
+        /* 1. Hero Section */
+        .adm-hero {
+            height: 60vh;
+            background: linear-gradient(to right, rgba(20,30,48,0.9), rgba(58, 123, 213, 0.4)), 
+                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 60px; /* Kompensasi Navbar Fixed */
+            padding: 0 20px;
+        }
+        
+        .adm-hero h1 { font-size: 3.5rem; color: #fff; margin-bottom: 10px; }
+        .adm-hero p { font-size: 1.2rem; color: #00d2ff; letter-spacing: 2px; }
+
+        /* 2. Timeline Steps (Alur Pendaftaran) */
+        .timeline { position: relative; max-width: 800px; margin: 50px auto; padding: 20px; }
+        
+        .timeline::after {
+            content: ''; position: absolute; width: 4px; background-color: #00d2ff; 
+            top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 5px;
+        }
+
+        .timeline-container {
+            padding: 10px 40px; position: relative; background-color: inherit; width: 50%;
+        }
+        
+        .t-content {
+            padding: 20px 30px; background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; position: relative;
+            backdrop-filter: blur(5px);
+        }
+        
+        .t-content h3 { color: #00d2ff; margin-bottom: 10px; }
+        .t-content p { font-size: 0.9rem; color: #ccc; }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+
+        .timeline-container::after {
+            content: ''; position: absolute; width: 20px; height: 20px; 
+            right: -10px; background-color: #141e30; border: 4px solid #00d2ff; 
+            top: 25px; border-radius: 50%; z-index: 1;
+        }
+        .right::after { left: -10px; }
+
+        /* --- 3. PRICING CARD STYLES (UPDATED) --- */
+        .cards-grid-pricing {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: stretch; /* Agar tinggi kartu sama rata */
+        }
+
+        .fee-card {
+            background: linear-gradient(145deg, #1e2a3b, #111823);
+            border: 1px solid rgba(255,255,255,0.1); 
+            padding: 40px 30px; 
+            border-radius: 20px; 
+            text-align: center; 
+            transition: 0.3s; 
+            position: relative; 
+            overflow: hidden;
+            
+            /* Flexbox agar tombol selalu di bawah rata */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; 
+        }
+
+        .fee-card:hover { 
+            transform: translateY(-10px); 
+            border-color: #00d2ff; 
+            box-shadow: 0 10px 40px rgba(0, 210, 255, 0.15); 
+        }
+
+        .fee-card h3 {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #00d2ff;
+            margin-bottom: 20px;
+        }
+
+        .price-container {
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 30px;
+        }
+
+        .currency {
+            font-size: 1.2rem;
+            vertical-align: top;
+            position: relative;
+            top: 10px;
+            color: #aaa;
+            margin-right: 5px;
+        }
+
+        .amount {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .period {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .fee-features {
+            list-style: none; 
+            text-align: left; 
+            color: #ccc; 
+            margin-bottom: 30px;
+            padding: 0;
+            flex-grow: 1; /* Mendorong tombol ke bawah */
+        }
+
+        .fee-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .fee-features i {
+            color: #00d2ff;
+            margin-right: 12px;
+            margin-top: 4px; /* Luruskan icon dengan teks */
+            flex-shrink: 0;
+        }
+
+        .popular-badge {
+            position: absolute; top: 25px; right: -30px; background: #00d2ff; 
+            color: #0b0f19; padding: 5px 40px; transform: rotate(45deg); 
+            font-weight: 800; font-size: 0.75rem; box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /* 4. Form Pendaftaran */
+        .apply-form {
+            max-width: 700px; margin: 0 auto; background: rgba(0,0,0,0.3); 
+            padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; color: #ccc; font-size: 0.9rem; }
+        .form-control {
+            width: 100%; padding: 12px; background: rgba(255,255,255,0.05); 
+            border: 1px solid #444; color: #fff; border-radius: 5px; outline: none; transition: 0.3s;
+        }
+        .form-control:focus { border-color: #00d2ff; background: rgba(255,255,255,0.1); }
+        
+        /* 5. FAQ Accordion */
+        .faq-item {
+            background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 10px;
+        }
+        .faq-question {
+            padding: 15px 20px; cursor: pointer; color: #fff; font-weight: 500; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; 
+            padding: 0 20px; color: #ccc; font-size: 0.9rem;
+        }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 15px; }
+        .faq-item.active .faq-question { color: #00d2ff; }
+        .fa-plus { transition: 0.3s; }
+        .faq-item.active .fa-plus { transform: rotate(45deg); }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .adm-hero { height: 50vh; padding-top: 40px; }
+            .adm-hero h1 { font-size: 2.2rem; }
+            
+            /* Timeline Mobile Fix */
+            .timeline::after { left: 31px; }
+            .timeline-container { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-container::after { left: 21px; } 
+            .left::after, .right::after { left: 21px; }
+            .right { left: 0; }
+
+            /* Pricing Mobile Fix */
+            .amount { font-size: 2.8rem; }
+            .cards-grid-pricing { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <div class="logo">
+                    <img src="../assets/images/logo-kecil.png" alt="Logo"> 
+                    <div class="logo-text">
+                        <span>ELYSIUM</span>
+                        <small>INTERNATIONAL</small>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">HOME</a></li>
+                    <li><a href="../index.html#academics">ACADEMICS</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="#" class="active">ADMISSION</a></li>
+                          <li><a href="gallery.html">GALLERY</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="adm-hero">
+        <div data-aos="zoom-in">
+            <h1>Join the Future Elite</h1>
+            <p>Penerimaan Siswa Baru Tahun Ajaran 2026/2027</p>
+            <a href="#form-daftar" class="btn-glow" style="margin-top: 20px;">Daftar Sekarang</a>
+        </div>
+    </section>
+
+    <section class="section-pad bg-darker">
+        <div class="container">
+            <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center;">
+                <div data-aos="fade-up">
+                    <h2 style="color: #00d2ff; font-size: 2.5rem;">150</h2>
+                    <p>Available Seats</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h2 style="color: #00d2ff; font-size: 2.5rem;">100%</h2>
+                    <p>University Acceptance</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h2 style="color: #00d2ff; font-size: 2.5rem;">24:1</h2>
+                    <p>Student-Teacher Ratio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container">
+            <div class="section-title">
+                <h2>ADMISSION PROCESS</h2>
+                <p>Langkah mudah menuju masa depan gemilang</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="t-content">
+                        <h3>1. Online Registration</h3>
+                        <p>Isi formulir pendaftaran secara online dan lengkapi dokumen akademik dasar.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="t-content">
+                        <h3>2. AI Aptitude Test</h3>
+                        <p>Tes potensi akademik berbasis AI untuk memetakan bakat dan minat siswa secara akurat.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="t-content">
+                        <h3>3. Interview</h3>
+                        <p>Wawancara dengan psikolog dan kepala jurusan untuk menilai karakter dan visi siswa.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="t-content">
+                        <h3>4. Announcement</h3>
+                        <p>Hasil seleksi akan dikirimkan melalui email dalam waktu 3 hari kerja setelah wawancara.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad bg-darker">
+        <div class="container">
+            <div class="section-title">
+                <h2>TUITION & INVESTMENT</h2>
+                <p>Investasi terbaik untuk masa depan putra-putri Anda</p>
+            </div>
+
+            <div class="cards-grid-pricing">
+                
+                <div class="fee-card" data-aos="fade-up">
+                    <div>
+                        <h3>Regular Class</h3>
+                        <div class="price-container">
+                            <span class="currency">Rp</span>
+                            <span class="amount">5.6jt</span>
+                            <span class="period">/ bulan</span>
+                        </div>
+                        <ul class="fee-features">
+                            <li><i class="fas fa-check-circle"></i> <strong>Termasuk Uang Gedung</strong> (Thn 1)</li>
+                            <li><i class="fas fa-check-circle"></i> Kurikulum Cambridge & Nasional</li>
+                            <li><i class="fas fa-check-circle"></i> Seragam Lengkap & Buku Paket</li>
+                            <li><i class="fas fa-check-circle"></i> Makan Siang Bernutrisi (Catering)</li>
+                            <li><i class="fas fa-check-circle"></i> Akses Ekskul Standar</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn-outline" style="border-radius: 50px; width:100%; text-align:center;">Daftar Regular</a>
+                </div>
+
+                <div class="fee-card" style="border-color: #00d2ff; box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);" data-aos="fade-up" data-aos-delay="100">
+                    <div class="popular-badge">BEST VALUE</div>
+                    <div>
+                        <h3>Elite Class</h3>
+                        <div class="price-container">
+                            <span class="currency">Rp</span>
+                            <span class="amount">13.4jt</span>
+                            <span class="period">/ bulan</span>
+                        </div>
+                        <ul class="fee-features">
+                            <li><i class="fas fa-star" style="color: gold;"></i> <strong>MacBook Pro M4</strong> (Hak Milik)</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Termasuk Asrama Premium</strong></li>
+                            <li><i class="fas fa-check-circle"></i> Semua Benefit Regular Class</li>
+                            <li><i class="fas fa-check-circle"></i> 24/7 Akses Lab AI & Robotik</li>
+                            <li><i class="fas fa-check-circle"></i> Private Mentoring 1-on-1</li>
+                            <li><i class="fas fa-check-circle"></i> Annual Summer Trip (Eropa)</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn-glow" style="width:100%; text-align:center;">Daftar Elite</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="form-daftar" class="section-pad">
+        <div class="container">
+            <div class="section-title">
+                <h2>REGISTER NOW</h2>
+                <p>Kursi terbatas. Amankan posisi Anda sekarang.</p>
+            </div>
+
+            <div class="apply-form" data-aos="fade-up">
+                <form action="#">
+                    <div class="form-group">
+                        <label>Nama Lengkap Siswa</label>
+                        <input type="text" class="form-control" placeholder="Masukkan nama lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Orang Tua / Wali</label>
+                        <input type="email" class="form-control" placeholder="contoh@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Pilih Jurusan Minat</label>
+                        <select class="form-control">
+                            <option>Informatics & Coding</option>
+                            <option>Business Management</option>
+                            <option>Visual Design</option>
+                            <option>Cyber Security</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nomor WhatsApp</label>
+                        <input type="tel" class="form-control" placeholder="+62...">
+                    </div>
+                    <button type="submit" class="btn-glow" style="width: 100%; cursor: pointer;">Kirim Formulir</button>
+                </form>
+            </div>
+
+            <div style="max-width: 700px; margin: 60px auto 0;">
+                <h3 style="text-align: center; margin-bottom: 20px; color: #00d2ff;">Frequently Asked Questions</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Kapan batas akhir pendaftaran? <i class="fas fa-plus"></i></div>
+                    <div class="faq-answer">Pendaftaran gelombang pertama ditutup pada 30 Mei 2026. Gelombang kedua akan dibuka jika kuota masih tersedia.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Apakah ada beasiswa? <i class="fas fa-plus"></i></div>
+                    <div class="faq-answer">Ya, kami menyediakan beasiswa prestasi akademik dan non-akademik (esports, seni, olahraga) hingga 100%.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Apakah asrama wajib? <i class="fas fa-plus"></i></div>
+                    <div class="faq-answer">Asrama bersifat opsional untuk kelas Regular, namun sudah Termasuk (Include) dalam biaya kelas Elite.</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>ELYSIUM INTERNATIONAL</h3>
+                <p>Jl. Antariksa No. 99, Jakarta</p>
+                <p>Phone: +62 895-1929-9897</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="../index.html#academics">Academics</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Socials</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 Elysium International Highschool.</div>
+    </footer>
+
+    <div class="scroll-up-btn" id="scrollToTop"><i class="fas fa-chevron-up"></i></div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../assets/js/script.js"></script>
+    
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                // Toggle active class
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Elysium International Highschool</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- KHUSUS CONTACT PAGE --- */
+        
+        /* 1. Hero Section */
+        .contact-hero {
+            height: 50vh;
+            background: linear-gradient(to bottom, rgba(20,30,48,0.8), #141e30), 
+                        url('https://images.unsplash.com/photo-1423666639041-f142fcb93370?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 60px;
+            padding: 0 20px;
+        }
+        
+        .contact-hero h1 { font-size: 3rem; color: #fff; margin-bottom: 10px; }
+        .contact-hero p { color: #00d2ff; letter-spacing: 2px; }
+
+        /* 2. Info Cards (Grid) */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+            border-color: #00d2ff;
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            color: #00d2ff;
+            margin-bottom: 20px;
+            background: rgba(0, 210, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .info-card h3 { margin-bottom: 10px; color: #fff; }
+        .info-card p { color: #aaa; font-size: 0.9rem; line-height: 1.6; }
+
+        /* 3. Map & Form Container */
+        .map-form-container {
+            display: flex;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        /* --- UPDATE: MAP STYLING (FULL BLEED) --- */
+        .map-card {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            padding: 0; /* Hapus padding agar full */
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden; /* Sudut melengkung memotong peta */
+            position: relative;
+            min-height: 500px; /* Tinggi Desktop */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            /* Filter Dark Mode untuk Peta */
+            filter: grayscale(100%) invert(92%) contrast(83%);
+            display: block;
+        }
+
+        /* Form Styling */
+        .form-card {
+            flex: 1;
+            background: rgba(20, 30, 48, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; color: #ccc; margin-bottom: 8px; font-size: 0.9rem; }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .form-control:focus {
+            border-color: #00d2ff;
+            background: rgba(0,0,0,0.2);
+        }
+        textarea.form-control { resize: none; height: 120px; }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .contact-hero { height: 40vh; margin-top: 0; padding-top: 60px; }
+            .contact-hero h1 { font-size: 2.2rem; }
+            
+            .map-form-container {
+                flex-direction: column-reverse; /* Form di atas, Peta di bawah */
+                gap: 30px;
+            }
+            
+            .map-card { 
+                min-height: 350px; /* Tinggi Peta di HP */
+                width: 100%;
+            }
+            
+            .form-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <div class="logo">
+                    <img src="../assets/images/logo-kecil.png" alt="Logo"> 
+                    <div class="logo-text">
+                        <span>ELYSIUM</span>
+                        <small>INTERNATIONAL</small>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">HOME</a></li>
+                    <li><a href="../index.html#academics">ACADEMICS</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="admission.html">ADMISSION</a></li>
+                            <li><a href="gallery.html">GALLERY</a></li>
+                    <li><a href="#" class="active">CONTACT</a></li>
+                </ul>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="contact-hero">
+        <div data-aos="fade-up">
+            <h1>Get in Touch</h1>
+            <p>Kami siap membantu menjawab pertanyaan Anda</p>
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="info-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                    <h3>Phone & WhatsApp</h3>
+                    <p>Admission: +62 895-1929-9897</p>
+                    <p>Office: (021) 7788-9900</p>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email Inquiry</h3>
+                    <p>admission@elysium.sch.id</p>
+                    <p>info@elysium.sch.id</p>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Main Campus</h3>
+                    <p>Jl. Antariksa No. 99, Jakarta Selatan</p>
+                    <p>Indonesia, Earth 10220</p>
+                </div>
+            </div>
+
+            <div class="map-form-container">
+                
+                <div class="map-card" data-aos="fade-right">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126906.96024941604!2d106.73602568249826!3d-6.284793616853606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1ec2422b423%3A0xbc0c44d62193e775!2sJakarta%20Selatan%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1707115858000!5m2!1sid!2sid" 
+                        class="map-frame" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    
+                    <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 5px 15px; border-radius: 5px; font-size: 0.8rem; pointer-events: none; color: #fff;">
+                        <i class="fas fa-map-marker-alt" style="color: #00d2ff;"></i> Main Campus Location
+                    </div>
+                </div>
+
+                <div class="form-card" data-aos="fade-left">
+                    <h2 style="color: #00d2ff; margin-bottom: 20px;">Send a Message</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" class="form-control" placeholder="Nama Anda">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="email@contoh.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select class="form-control">
+                                <option>Informasi Pendaftaran</option>
+                                <option>Jadwal Kunjungan (Visit)</option>
+                                <option>Kerjasama / Partnership</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea class="form-control" placeholder="Tulis pesan Anda di sini..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-glow" style="width: 100%; cursor:pointer;">Kirim Pesan</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>ELYSIUM INTERNATIONAL</h3>
+                <p>Jl. Antariksa No. 99, Jakarta</p>
+                <p>Phone: +62 895-1929-9897</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Socials</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">© 2026 Elysium International Highschool.</div>
+    </footer>
+
+    <div class="scroll-up-btn" id="scrollToTop"><i class="fas fa-chevron-up"></i></div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../assets/js/script.js"></script>
+
+</body>
+</html>

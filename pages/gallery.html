@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Elysium International Highschool</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- KHUSUS GALLERY PAGE --- */
+        
+        /* 1. Hero Section */
+        .gallery-hero {
+            height: 50vh;
+            background: linear-gradient(to bottom, rgba(20,30,48,0.8), #141e30), 
+                        url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 60px;
+            padding: 0 20px;
+        }
+        
+        .gallery-hero h1 { font-size: 3rem; color: #fff; margin-bottom: 10px; }
+        .gallery-hero p { color: #00d2ff; letter-spacing: 2px; }
+
+        /* 2. Filter Buttons */
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .g-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #ccc;
+            padding: 8px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .g-btn:hover, .g-btn.active {
+            background: #00d2ff;
+            color: #0b0f19;
+            border-color: #00d2ff;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+        }
+
+        /* 3. Masonry Grid System */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-auto-rows: 250px; /* Tinggi dasar setiap baris */
+            gap: 15px;
+            grid-auto-flow: dense; /* Mengisi celah kosong */
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Variasi Ukuran (Wide & Tall) */
+        .gallery-item.wide { grid-column: span 2; }
+        .gallery-item.tall { grid-row: span 2; }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* Hover Overlay Effect */
+        .overlay {
+            position: absolute;
+            bottom: -100%; /* Sembunyi di bawah */
+            left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            transition: 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay { bottom: 0; }
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        .overlay h4 { color: #fff; margin-bottom: 5px; transform: translateY(20px); transition: 0.4s; }
+        .overlay p { color: #00d2ff; font-size: 0.8rem; transform: translateY(20px); transition: 0.4s 0.1s; } /* Delay dikit */
+        
+        .gallery-item:hover .overlay h4, 
+        .gallery-item:hover .overlay p { transform: translateY(0); }
+
+        /* 4. Lightbox (Modal Popup) */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            display: none; /* Hidden default */
+            justify-content: center; align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .lightbox img {
+            max-width: 90%; max-height: 80vh;
+            border: 2px solid #00d2ff;
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        }
+
+        .close-lightbox {
+            position: absolute; top: 30px; right: 40px;
+            color: #fff; font-size: 3rem; cursor: pointer; transition: 0.3s;
+        }
+        .close-lightbox:hover { color: #00d2ff; transform: rotate(90deg); }
+
+        /* Hide items when filtered */
+        .gallery-item.hide { display: none; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
+            .gallery-item.wide, .gallery-item.tall { grid-column: span 1; grid-row: span 1; } /* Reset size di HP */
+            .gallery-hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <div class="logo">
+                    <img src="../assets/images/logo-kecil.png" alt="Logo"> 
+                    <div class="logo-text">
+                        <span>ELYSIUM</span>
+                        <small>INTERNATIONAL</small>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="admission.html">ADMISSION</a></li>
+                    <li><a href="#" class="active">GALLERY</a></li> <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="gallery-hero">
+        <div data-aos="zoom-in">
+            <h1>Our Moments</h1>
+            <p>Merekam jejak langkah para pemimpin masa depan</p>
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container">
+            
+            <div class="gallery-filter" data-aos="fade-up">
+                <button class="g-btn active" onclick="filterGallery('all')">All</button>
+                <button class="g-btn" onclick="filterGallery('campus')">Campus Life</button>
+                <button class="g-btn" onclick="filterGallery('robotics')">Robotics & Tech</button>
+                <button class="g-btn" onclick="filterGallery('students')">Students</button>
+            </div>
+
+            <div class="gallery-grid">
+                
+                <div class="gallery-item wide campus" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600&auto=format&fit=crop" alt="Campus">
+                    <div class="overlay">
+                        <h4>Main Building</h4>
+                        <p>Elysium Central Campus</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item tall robotics" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1600&auto=format&fit=crop" alt="Robot">
+                    <div class="overlay">
+                        <h4>AI Laboratory</h4>
+                        <p>Advanced Robotics Research</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item students" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop" alt="Student">
+                    <div class="overlay">
+                        <h4>Group Discussion</h4>
+                        <p>Collaborative Learning</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item robotics" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1600&auto=format&fit=crop" alt="Tech">
+                    <div class="overlay">
+                        <h4>Coding Class</h4>
+                        <p>Future Programmers</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item wide students" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=1600&auto=format&fit=crop" alt="Graduation">
+                    <div class="overlay">
+                        <h4>Graduation Day</h4>
+                        <p>Class of 2025</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item campus" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1600&auto=format&fit=crop" alt="Library">
+                    <div class="overlay">
+                        <h4>Digital Library</h4>
+                        <p>Knowledge Hub</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item robotics" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1600&auto=format&fit=crop" alt="Robot Hand">
+                    <div class="overlay">
+                        <h4>Humanoid Project</h4>
+                        <p>Student Innovation</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Preview">
+    </div>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>ELYSIUM INTERNATIONAL</h3>
+                <p>Jl. Antariksa No. 99, Jakarta</p>
+                <p>Phone: +62 895-1929-9897</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Socials</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">© 2026 Elysium International Highschool.</div>
+    </footer>
+
+    <div class="scroll-up-btn" id="scrollToTop"><i class="fas fa-chevron-up"></i></div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../assets/js/script.js"></script>
+
+    <script>
+        // 1. Logic Filter Gallery
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.g-btn');
+
+            // Hapus active class dari semua tombol
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Tambah active ke tombol yang diklik (menggunakan event.target tricky, jadi loop sederhana aja)
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.remove('hide');
+                    item.style.animation = "fadeIn 0.5s ease"; // Efek animasi ulang
+                } else {
+                    item.classList.add('hide');
+                }
+            });
+        }
+
+        // 2. Logic Lightbox (Pop-up Gambar)
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const images = document.querySelectorAll('.gallery-item img');
+
+        // Tambah event click ke setiap gambar
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = "flex";
+                lightboxImg.src = img.src; // Ambil source gambar yang diklik
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.style.display = "none";
+        }
+
+        // Tutup jika klik di area hitam luar gambar
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Tambahkan keyframe animasi sederhana di JS
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: scale(0.9); }
+                to { opacity: 1; transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
