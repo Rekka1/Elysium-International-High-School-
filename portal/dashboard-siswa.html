@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Siswa | Elysium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body onload="checkSession()">
+
+    <nav class="dash-navbar">
+        <div class="brand">
+            <i class="fas fa-user-graduate" style="color: #00ff88;"></i>
+            ELYSIUM <span>STUDENT</span>
+        </div>
+        
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a onclick="showSection('home')" class="active">Dashboard</a></li>
+            <li><a onclick="showSection('rapot')">Lihat Rapot</a></li>
+            <li><a onclick="showSection('keuangan')">Keuangan</a></li>
+            <li><a onclick="showSection('jadwal')">Jadwal</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <img src="https://ui-avatars.com/api/?name=Siswa&background=00d2ff&color=fff" style="width: 30px; border-radius: 50%;"> 
+            <span id="userNameDisplay">Siswa</span>
+            <i class="fas fa-sign-out-alt logout-btn" onclick="logout()" title="Logout"></i>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="home" class="content-section active">
+            <div class="page-header">
+                <h2>Status Akademik</h2>
+            </div>
+            <div class="card-grid">
+                <div class="stat-card">
+                    <h3>IPK Semester Lalu</h3>
+                    <div class="number" style="color: #00ff88;">3.85</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Kehadiran</h3>
+                    <div class="number">98%</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Tagihan SPP</h3>
+                    <div class="number" style="color: #ff4d4d;">Rp 0</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="rapot" class="content-section">
+            <div class="page-header">
+                <h2>Hasil Studi Semester Genap</h2>
+                <button class="btn" style="background: #00b894; color: white; padding: 10px; border:none; border-radius: 5px; cursor: pointer;">
+                    <i class="fas fa-print"></i> Cetak PDF
+                </button>
+            </div>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mata Pelajaran</th>
+                            <th>KKM</th>
+                            <th>Nilai Akhir</th>
+                            <th>Predikat</th>
+                            <th>Ket</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodySiswa">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="keuangan" class="content-section">
+            <div class="page-header"><h2>Riwayat Pembayaran</h2></div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bulan</th>
+                            <th>Jumlah</th>
+                            <th>Tanggal Bayar</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Januari 2026</td>
+                            <td>Rp 500.000</td>
+                            <td>10 Jan 2026</td>
+                            <td><span class="status-lulus">Lunas</span></td>
+                        </tr>
+                        <tr>
+                            <td>Februari 2026</td>
+                            <td>Rp 500.000</td>
+                            <td>-</td>
+                            <td><span class="status-pending">Belum Bayar</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="jadwal" class="content-section">
+            <div class="page-header"><h2>Jadwal Pelajaran</h2></div>
+            <p>Jadwal akan muncul di sini.</p>
+        </div>
+
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

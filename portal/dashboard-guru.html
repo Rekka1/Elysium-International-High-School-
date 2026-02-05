@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Guru | Elysium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body onload="checkSession()">
+
+    <nav class="dash-navbar">
+        <div class="brand">
+            <i class="fas fa-school" style="color: #00d2ff;"></i>
+            ELYSIUM <span>TEACHER</span>
+        </div>
+        
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a onclick="showSection('home')" class="active">Dashboard</a></li>
+            <li><a onclick="showSection('rapot')">Input Rapot</a></li>
+            <li><a onclick="showSection('siswa')">Data Siswa</a></li>
+            <li><a onclick="showSection('jadwal')">Jadwal Mengajar</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <i class="fas fa-user-circle"></i> <span id="userNameDisplay">Guru</span>
+            <i class="fas fa-sign-out-alt logout-btn" onclick="logout()" title="Logout"></i>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="home" class="content-section active">
+            <div class="page-header">
+                <h2>Overview Ringkasan</h2>
+            </div>
+            <div class="card-grid">
+                <div class="stat-card">
+                    <h3>Total Siswa</h3>
+                    <div class="number">120</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Kelas Wali</h3>
+                    <div class="number">XII IPA 1</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Rata-rata Nilai</h3>
+                    <div class="number">85.4</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Tugas Masuk</h3>
+                    <div class="number">45</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="rapot" class="content-section">
+            <div class="page-header">
+                <h2>Input Nilai & Rapot Siswa</h2>
+                <button style="padding: 10px 20px; background: #00d2ff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                    <i class="fas fa-plus"></i> Tambah Nilai
+                </button>
+            </div>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Siswa</th>
+                            <th>NISN</th>
+                            <th>MTK</th>
+                            <th>FIS</th>
+                            <th>BIO</th>
+                            <th>Rata-Rata</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyGuru">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="siswa" class="content-section">
+            <div class="page-header"><h2>Data Kelas XII IPA 1</h2></div>
+            <p>Fitur manajemen data siswa detail akan tampil di sini.</p>
+        </div>
+
+        <div id="jadwal" class="content-section">
+            <div class="page-header"><h2>Jadwal Mengajar</h2></div>
+            <div class="stat-card" style="border-left-color: orange;">
+                <h3>Senin, 08:00 - 10:00</h3>
+                <div class="number" style="font-size: 1.5rem;">Matematika Wajib</div>
+                <p>Ruang 304 - Gedung A</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
