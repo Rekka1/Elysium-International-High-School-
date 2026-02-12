@@ -878,3 +878,98 @@ footer {
         font-size: 0.8rem;
     }
 }
+
+/* --- PARTNERS MARQUEE SECTION --- */
+.partners-section {
+    padding: 50px 0;
+    background: #0b0f19; /* Latar gelap */
+    overflow: hidden; /* Sembunyikan scrollbar horizontal */
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logos-slider {
+    background: rgba(255, 255, 255, 0.02); /* Sedikit terang */
+    padding: 30px 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+/* Efek Fading di Kiri dan Kanan (Opsional, biar makin estetik) */
+.logos-slider::before,
+.logos-slider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+}
+
+.logos-slider::before {
+    left: 0;
+    background: linear-gradient(to right, #0b0f19, transparent);
+}
+
+.logos-slider::after {
+    right: 0;
+    background: linear-gradient(to left, #0b0f19, transparent);
+}
+
+.logos-slide-track {
+    display: flex;
+    align-items: center;
+    width: calc(250px * 14); /* 250px (lebar slide) x Jumlah Total Logo (Asli + Duplikat) */
+    animation: scrollLogos 30s linear infinite;
+}
+
+.slide {
+    width: 250px; /* Lebar area per logo */
+    padding: 0 30px; /* Jarak antar logo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide img {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(100%) opacity(0.5); /* Bikin logo abu-abu & agak transparan */
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* Saat di-hover, logo jadi berwarna & terang */
+.slide img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+/* Animasi Berjalan */
+@keyframes scrollLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 7)); /* Geser sebanyak jumlah logo ASLI (7) */
+    }
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .logos-slider::before, .logos-slider::after {
+        width: 50px; /* Perkecil efek fade di HP */
+    }
+    .slide {
+        width: 150px; /* Perkecil ukuran logo di HP */
+        padding: 0 15px;
+    }
+    .logos-slide-track {
+        width: calc(150px * 14);
+        animation: scrollLogos 20s linear infinite; /* Sedikit lebih cepat di HP */
+    }
+    @keyframes scrollLogos {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-150px * 7)); }
+    }
+}
