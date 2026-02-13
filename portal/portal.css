@@ -4,7 +4,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 
 body {
-    background: #0b0f19;
+    background: linear-gradient(135deg, #05070a, #0b111e, #141e30);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -17,11 +17,12 @@ body {
     position: relative;
     width: 900px;
     height: 550px;
-    background: #141e30;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* --- DESKTOP ONLY STYLES --- */
@@ -82,7 +83,7 @@ form.sign-up-form { opacity: 0; z-index: 1; }
 .input-field {
     max-width: 380px;
     width: 100%;
-    background-color: rgba(255,255,255,0.05);
+    background-color: rgba(255, 255, 255, 0.05);
     margin: 10px 0;
     height: 55px;
     border-radius: 55px;
@@ -90,7 +91,7 @@ form.sign-up-form { opacity: 0; z-index: 1; }
     grid-template-columns: 15% 85%;
     padding: 0 0.4rem;
     position: relative;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: 0.3s;
 }
 .input-field:hover { border-color: #00d2ff; }
