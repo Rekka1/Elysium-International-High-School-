@@ -4,7 +4,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 
 body {
-    background: linear-gradient(135deg, #05070a, #0b111e, #141e30);
+    /* More neutral dark gradient */
+    background: linear-gradient(135deg, #05070a, #0f1216, #1a1a1a);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -27,7 +28,7 @@ body {
 
 /* --- DESKTOP ONLY STYLES --- */
 
-/* Bola Biru Animasi */
+/* Bola Silver/White Animasi (Elegant White) */
 .container:before {
     content: "";
     position: absolute;
@@ -36,10 +37,12 @@ body {
     top: -10%;
     right: 55%; 
     transform: translateY(-50%);
-    background-image: linear-gradient(-45deg, #00d2ff 0%, #0072ff 100%);
+    /* Gradient White/Silver */
+    background-image: linear-gradient(-45deg, #ffffff 0%, #b0b0b0 100%);
     transition: 1.8s ease-in-out;
     border-radius: 50%;
     z-index: 6;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
 }
 
 .forms-container {
@@ -54,7 +57,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 75%; /* Ini yang bikin masalah di HP jika tidak di-reset */
+    left: 75%;
     width: 50%;
     transition: 1s 0.7s ease-in-out;
     display: grid;
@@ -78,7 +81,13 @@ form {
 form.sign-in-form { z-index: 2; }
 form.sign-up-form { opacity: 0; z-index: 1; }
 
-.title { font-size: 2.2rem; color: #fff; margin-bottom: 20px; text-align: center; }
+.title {
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
 
 .input-field {
     max-width: 380px;
@@ -91,49 +100,89 @@ form.sign-up-form { opacity: 0; z-index: 1; }
     grid-template-columns: 15% 85%;
     padding: 0 0.4rem;
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: 0.3s;
 }
-.input-field:hover { border-color: #00d2ff; }
-.input-field i { text-align: center; line-height: 55px; color: #00d2ff; font-size: 1.1rem; }
-.input-field input { background: none; outline: none; border: none; line-height: 1; font-weight: 500; font-size: 1rem; color: #fff; width: 100%; }
+.input-field:hover {
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+.input-field i {
+    text-align: center;
+    line-height: 55px;
+    color: #ffffff; /* White Icon */
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+.input-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #fff;
+    width: 100%;
+}
 .input-field input::placeholder { color: #aaa; }
 
 .btn {
     width: 150px;
-    background-color: #00d2ff;
+    background-color: #ffffff; /* White Button */
     border: none;
     outline: none;
     height: 49px;
     border-radius: 49px;
-    color: #0b0f19;
+    color: #0b0f19; /* Dark Text */
     text-transform: uppercase;
     font-weight: 700;
     margin: 20px 0;
     cursor: pointer;
     transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
     z-index: 20; 
     position: relative;
 }
-.btn:hover { background-color: #009ec5; transform: scale(1.05); }
+.btn:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+}
 
 .social-text { font-size: 0.9rem; color: #ccc; cursor: pointer; transition: 0.3s; }
-.social-text:hover { color: #00d2ff; }
+.social-text:hover { color: #ffffff; text-shadow: 0 0 5px #fff; }
 .error-msg { color: #ff4d4d; font-size: 0.85rem; margin-top: 10px; display: none; }
 
 .mobile-text { display: none; margin-top: 25px; font-size: 0.9rem; color: #ccc; text-align: center; }
-.mobile-text a { color: #00d2ff; text-decoration: none; font-weight: 600; margin-left: 5px; }
+.mobile-text a { color: #ffffff; text-decoration: none; font-weight: 600; margin-left: 5px; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
 
 /* Panels Desktop */
 .panels-container { position: absolute; height: 100%; width: 100%; top: 0; left: 0; display: grid; grid-template-columns: repeat(2, 1fr); }
 .panel { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; text-align: center; padding: 3rem 17% 2rem 12%; z-index: 10; }
 .left-panel { pointer-events: none; padding: 3rem 17% 2rem 12%; }
 .right-panel { pointer-events: none; padding: 3rem 12% 2rem 17%; align-items: flex-start; }
-.panel .content { color: #fff; transition: transform 0.9s ease-in-out; transition-delay: 0.6s; }
-.panel h3 { font-weight: 700; line-height: 1; font-size: 1.8rem; margin-bottom: 10px; }
-.panel p { font-size: 0.9rem; padding: 0.7rem 0; line-height: 1.5; color: #eee; }
-.btn.transparent { margin: 10px 0; background: none; border: 2px solid #fff; width: 130px; height: 41px; font-weight: 600; font-size: 0.8rem; color: #fff; box-shadow: none; pointer-events: auto; cursor: pointer; }
+
+.panel .content { color: #0b0f19; /* Dark text against white ball */ transition: transform 0.9s ease-in-out; transition-delay: 0.6s; }
+.panel h3 { font-weight: 800; line-height: 1; font-size: 1.8rem; margin-bottom: 10px; }
+.panel p { font-size: 0.9rem; padding: 0.7rem 0; line-height: 1.5; color: #333; font-weight: 500; }
+.btn.transparent {
+    margin: 10px 0;
+    background: none;
+    border: 2px solid #0b0f19; /* Dark border against white ball */
+    color: #0b0f19; /* Dark text */
+    width: 130px;
+    height: 41px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    box-shadow: none;
+    pointer-events: auto;
+    cursor: pointer;
+}
+.btn.transparent:hover {
+    background: #0b0f19;
+    color: #fff;
+}
+
 .image { width: 100%; transition: transform 1.1s ease-in-out; transition-delay: 0.4s; margin-top: 20px; }
 
 /* Animasi Desktop States */
@@ -149,8 +198,24 @@ form.sign-up-form { opacity: 0; z-index: 1; }
 .container:not(.sign-up-mode) .right-panel .image, .container:not(.sign-up-mode) .right-panel .content { transform: translateX(800px); }
 .container:not(.sign-up-mode) .signin-signup { left: 75%; transform: translate(-50%, -50%); }
 
-.back-home { position: absolute; top: 20px; left: 20px; color: #aaa; text-decoration: none; z-index: 30; font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-.back-home:hover { color: #00d2ff; }
+.back-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #aaa;
+    text-decoration: none;
+    z-index: 30;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+.back-home:hover {
+    color: #ffffff;
+    text-shadow: 0 0 5px #fff;
+}
 
 /* --- RESPONSIVE MOBILE FIX (FORCE CENTER) --- */
 @media (max-width: 870px) {
@@ -167,7 +232,7 @@ form.sign-up-form { opacity: 0; z-index: 1; }
     }
 
     /* 2. Hilangkan Elemen Desktop */
-    .container:before { display: none; } /* Hapus Bola Biru */
+    .container:before { display: none; } /* Hapus Bola */
     .panels-container { display: none; } /* Hapus Panel Kanan/Kiri */
     
     .mobile-text { display: block; }
@@ -189,13 +254,13 @@ form.sign-up-form { opacity: 0; z-index: 1; }
         position: relative;
         top: 0 !important;
         left: 0 !important;
-        transform: none !important; /* Matikan semua geser-geser desktop */
+        transform: none !important;
         width: 100%;
-        max-width: 400px; /* Batasi lebar agar enak dilihat */
+        max-width: 400px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        transition: none; /* Matikan animasi transisi */
+        transition: none;
     }
 
     form {

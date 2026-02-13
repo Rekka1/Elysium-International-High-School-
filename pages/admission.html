@@ -16,7 +16,8 @@
         /* 1. Hero Section */
         .adm-hero {
             height: 60vh;
-            background: linear-gradient(to right, rgba(20,30,48,0.9), rgba(58, 123, 213, 0.4)), 
+            /* Update to neutral dark gradient */
+            background: linear-gradient(to right, rgba(20,30,48,0.9), rgba(50, 50, 60, 0.4)),
                         url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -28,15 +29,16 @@
             padding: 0 20px;
         }
         
-        .adm-hero h1 { font-size: 3.5rem; color: #fff; margin-bottom: 10px; }
-        .adm-hero p { font-size: 1.2rem; color: #00d2ff; letter-spacing: 2px; }
+        .adm-hero h1 { font-size: 3.5rem; color: #fff; margin-bottom: 10px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        .adm-hero p { font-size: 1.2rem; color: #ffffff; letter-spacing: 2px; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
 
         /* 2. Timeline Steps (Alur Pendaftaran) */
         .timeline { position: relative; max-width: 800px; margin: 50px auto; padding: 20px; }
         
         .timeline::after {
-            content: ''; position: absolute; width: 4px; background-color: #00d2ff; 
+            content: ''; position: absolute; width: 4px; background-color: #ffffff; /* White Line */
             top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
         .timeline-container {
@@ -49,7 +51,7 @@
             backdrop-filter: blur(5px);
         }
         
-        .t-content h3 { color: #00d2ff; margin-bottom: 10px; }
+        .t-content h3 { color: #ffffff; margin-bottom: 10px; text-shadow: 0 0 5px rgba(255,255,255,0.3); }
         .t-content p { font-size: 0.9rem; color: #ccc; }
 
         .left { left: 0; }
@@ -57,8 +59,9 @@
 
         .timeline-container::after {
             content: ''; position: absolute; width: 20px; height: 20px; 
-            right: -10px; background-color: #141e30; border: 4px solid #00d2ff; 
+            right: -10px; background-color: #141e30; border: 4px solid #ffffff; /* White Border */
             top: 25px; border-radius: 50%; z-index: 1;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
         .right::after { left: -10px; }
 
@@ -73,7 +76,8 @@
         }
 
         .fee-card {
-            background: linear-gradient(145deg, #1e2a3b, #111823);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1); 
             padding: 40px 30px; 
             border-radius: 20px; 
@@ -91,16 +95,18 @@
 
         .fee-card:hover { 
             transform: translateY(-10px); 
-            border-color: #00d2ff; 
-            box-shadow: 0 10px 40px rgba(0, 210, 255, 0.15); 
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #ffffff; /* White Hover */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
         .fee-card h3 {
             font-size: 1.1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #00d2ff;
+            color: #ffffff; /* White Text */
             margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(255,255,255,0.3);
         }
 
         .price-container {
@@ -114,7 +120,7 @@
             vertical-align: top;
             position: relative;
             top: 10px;
-            color: #aaa;
+            color: #ccc;
             margin-right: 5px;
         }
 
@@ -151,15 +157,17 @@
         }
 
         .fee-features i {
-            color: #00d2ff;
+            color: #ffffff; /* White Icon */
             margin-right: 12px;
             margin-top: 4px; /* Luruskan icon dengan teks */
             flex-shrink: 0;
+            text-shadow: 0 0 5px rgba(255,255,255,0.3);
         }
 
         .popular-badge {
-            position: absolute; top: 25px; right: -30px; background: #00d2ff; 
-            color: #0b0f19; padding: 5px 40px; transform: rotate(45deg); 
+            position: absolute; top: 25px; right: -30px; background: #ffffff; /* White Badge */
+            color: #0b0f19; /* Dark Text */
+            padding: 5px 40px; transform: rotate(45deg);
             font-weight: 800; font-size: 0.75rem; box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
 
@@ -174,7 +182,7 @@
             width: 100%; padding: 12px; background: rgba(255,255,255,0.05); 
             border: 1px solid #444; color: #fff; border-radius: 5px; outline: none; transition: 0.3s;
         }
-        .form-control:focus { border-color: #00d2ff; background: rgba(255,255,255,0.1); }
+        .form-control:focus { border-color: #ffffff; background: rgba(255,255,255,0.1); box-shadow: 0 0 10px rgba(255,255,255,0.1); }
         
         /* 5. FAQ Accordion */
         .faq-item {
@@ -189,7 +197,7 @@
             padding: 0 20px; color: #ccc; font-size: 0.9rem;
         }
         .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 15px; }
-        .faq-item.active .faq-question { color: #00d2ff; }
+        .faq-item.active .faq-question { color: #ffffff; text-shadow: 0 0 5px rgba(255,255,255,0.3); }
         .fa-plus { transition: 0.3s; }
         .faq-item.active .fa-plus { transform: rotate(45deg); }
 
@@ -231,7 +239,10 @@
                           <li><a href="gallery.html">GALLERY</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                 </ul>
-                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <div class="nav-actions">
+                    <a href="../portal/login.html" class="btn-login-nav">Sign In</a>
+                    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                </div>
             </div>
         </nav>
     </header>
@@ -248,15 +259,15 @@
         <div class="container">
             <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center;">
                 <div data-aos="fade-up">
-                    <h2 style="color: #00d2ff; font-size: 2.5rem;">150</h2>
+                    <h2 style="color: #ffffff; font-size: 2.5rem; text-shadow: 0 0 10px rgba(255,255,255,0.3);">150</h2>
                     <p>Available Seats</p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <h2 style="color: #00d2ff; font-size: 2.5rem;">100%</h2>
+                    <h2 style="color: #ffffff; font-size: 2.5rem; text-shadow: 0 0 10px rgba(255,255,255,0.3);">100%</h2>
                     <p>University Acceptance</p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <h2 style="color: #00d2ff; font-size: 2.5rem;">24:1</h2>
+                    <h2 style="color: #ffffff; font-size: 2.5rem; text-shadow: 0 0 10px rgba(255,255,255,0.3);">24:1</h2>
                     <p>Student-Teacher Ratio</p>
                 </div>
             </div>
@@ -327,7 +338,7 @@
                     <a href="#" class="btn-outline" style="border-radius: 50px; width:100%; text-align:center;">Daftar Regular</a>
                 </div>
 
-                <div class="fee-card" style="border-color: #00d2ff; box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);" data-aos="fade-up" data-aos-delay="100">
+                <div class="fee-card" style="border-color: #ffffff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);" data-aos="fade-up" data-aos-delay="100">
                     <div class="popular-badge">BEST VALUE</div>
                     <div>
                         <h3>Elite Class</h3>
@@ -387,7 +398,7 @@
             </div>
 
             <div style="max-width: 700px; margin: 60px auto 0;">
-                <h3 style="text-align: center; margin-bottom: 20px; color: #00d2ff;">Frequently Asked Questions</h3>
+                <h3 style="text-align: center; margin-bottom: 20px; color: #ffffff;">Frequently Asked Questions</h3>
                 
                 <div class="faq-item">
                     <div class="faq-question">Kapan batas akhir pendaftaran? <i class="fas fa-plus"></i></div>

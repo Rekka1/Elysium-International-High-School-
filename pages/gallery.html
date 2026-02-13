@@ -28,8 +28,8 @@
             padding: 0 20px;
         }
         
-        .gallery-hero h1 { font-size: 3rem; color: #fff; margin-bottom: 10px; }
-        .gallery-hero p { color: #00d2ff; letter-spacing: 2px; }
+        .gallery-hero h1 { font-size: 3rem; color: #fff; margin-bottom: 10px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        .gallery-hero p { color: #ffffff; letter-spacing: 2px; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
 
         /* 2. Filter Buttons */
         .gallery-filter {
@@ -52,11 +52,11 @@
         }
 
         .g-btn:hover, .g-btn.active {
-            background: #00d2ff;
-            color: #0b0f19;
-            border-color: #00d2ff;
+            background: #ffffff; /* White Active */
+            color: #0b0f19; /* Dark Text */
+            border-color: #ffffff;
             font-weight: 600;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
 
         /* 3. Masonry Grid System */
@@ -104,7 +104,7 @@
         .gallery-item:hover img { transform: scale(1.1); }
 
         .overlay h4 { color: #fff; margin-bottom: 5px; transform: translateY(20px); transition: 0.4s; }
-        .overlay p { color: #00d2ff; font-size: 0.8rem; transform: translateY(20px); transition: 0.4s 0.1s; } /* Delay dikit */
+        .overlay p { color: #ffffff; font-size: 0.8rem; transform: translateY(20px); transition: 0.4s 0.1s; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
         
         .gallery-item:hover .overlay h4, 
         .gallery-item:hover .overlay p { transform: translateY(0); }
@@ -121,16 +121,16 @@
 
         .lightbox img {
             max-width: 90%; max-height: 80vh;
-            border: 2px solid #00d2ff;
+            border: 2px solid #ffffff; /* White Border */
             border-radius: 5px;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
         }
 
         .close-lightbox {
             position: absolute; top: 30px; right: 40px;
             color: #fff; font-size: 3rem; cursor: pointer; transition: 0.3s;
         }
-        .close-lightbox:hover { color: #00d2ff; transform: rotate(90deg); }
+        .close-lightbox:hover { color: #ffffff; transform: rotate(90deg); text-shadow: 0 0 10px #fff; }
 
         /* Hide items when filtered */
         .gallery-item.hide { display: none; }
@@ -161,7 +161,10 @@
                     <li><a href="admission.html">ADMISSION</a></li>
                     <li><a href="#" class="active">GALLERY</a></li> <li><a href="contact.html">CONTACT</a></li>
                 </ul>
-                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <div class="nav-actions">
+                    <a href="../portal/login.html" class="btn-login-nav">Sign In</a>
+                    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                </div>
             </div>
         </nav>
     </header>

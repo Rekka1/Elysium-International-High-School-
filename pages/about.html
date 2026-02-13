@@ -25,8 +25,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 20px; /* Tambah padding agar teks tidak mentok pinggir */
-            margin-top: 60px; /* Kompensasi untuk Navbar yang Fixed */
+            padding: 0 20px;
+            margin-top: 60px;
         }
         
         .about-hero h1 { 
@@ -34,15 +34,17 @@
             color: #fff; 
             margin-bottom: 10px; 
             line-height: 1.2;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
         
         .breadcrumb { 
-            color: #00d2ff; 
+            color: #ffffff; /* Elegant White */
             font-weight: 600; 
             letter-spacing: 3px; 
             font-size: 0.9rem;
-            display: block; /* Agar baris baru */
+            display: block;
             margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
         /* Styling Profil Kepala Sekolah */
@@ -62,31 +64,30 @@
             height: 200px;
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid #00d2ff;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+            border: 3px solid #ffffff; /* White Border */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); /* White Glow */
         }
         
         .quote { 
             font-style: italic; 
             color: #ddd; 
             font-size: 1.1rem; 
-            border-left: 3px solid #00d2ff; 
+            border-left: 3px solid #ffffff; /* White Border */
             padding-left: 20px; 
             margin: 20px 0; 
             line-height: 1.6;
         }
 
-        /* --- MOBILE RESPONSIVE FIX (Bagian yang diperbaiki) --- */
+        /* --- MOBILE RESPONSIVE FIX --- */
         @media (max-width: 768px) {
-            /* 1. Perbaiki Hero di HP */
             .about-hero {
-                height: 50vh; /* Tinggi dikurangi sedikit agar pas */
-                margin-top: 0; /* Reset margin karena navbar mobile beda handling */
-                padding-top: 60px; /* Beri jarak dari atas supaya tidak tertutup navbar */
+                height: 50vh;
+                margin-top: 0;
+                padding-top: 60px;
             }
 
             .about-hero h1 {
-                font-size: 2.5rem; /* Ukuran font dikecilkan dari 3.5rem */
+                font-size: 2.5rem;
             }
 
             .breadcrumb {
@@ -94,17 +95,15 @@
                 letter-spacing: 2px;
             }
 
-            /* 2. Perbaiki Bagian Vision & Mission */
             .about-text h1 {
-                font-size: 2rem !important; /* Paksa font judul section jadi lebih kecil */
+                font-size: 2rem !important;
                 line-height: 1.3;
             }
             
             .about-text h2 {
-                font-size: 1.2rem !important; /* Judul kecil (OUR VISION) */
+                font-size: 1.2rem !important;
             }
 
-            /* 3. Perbaiki Profil Kepala Sekolah di HP */
             .principal-section { 
                 flex-direction: column; 
                 text-align: center; 
@@ -112,13 +111,13 @@
             }
             
             .principal-img img {
-                width: 150px; /* Foto lebih kecil */
+                width: 150px;
                 height: 150px;
             }
 
             .quote { 
                 border-left: none; 
-                border-top: 3px solid #00d2ff; 
+                border-top: 3px solid #ffffff; /* White Border */
                 padding-top: 20px; 
                 padding-left: 0; 
                 font-size: 1rem;
@@ -145,7 +144,10 @@
                     <li><a href="gallery.html">GALLERY</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                 </ul>
-                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <div class="nav-actions">
+                    <a href="../portal/login.html" class="btn-login-nav">Sign In</a>
+                    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                </div>
             </div>
         </nav>
     </header>
@@ -161,7 +163,7 @@
     <section class="section-pad">
         <div class="container about-container">
             <div class="about-text" data-aos="fade-right">
-                <h2 style="color: #00d2ff;">OUR VISION</h2>
+                <h2 style="color: #ffffff;">OUR VISION</h2>
                 <h1 style="margin-bottom: 20px;">The Future of Education</h1>
                 <p>Elysium International High School bukan sekadar sekolah, melainkan inkubator bagi para pemimpin masa depan. Kami percaya bahwa teknologi dan kemanusiaan harus berjalan beriringan.</p>
                 
@@ -214,7 +216,7 @@
                     <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Principal">
                 </div>
                 <div class="principal-text">
-                    <h2 style="color: #00d2ff;">Prof. Dr. Alexander Nexus</h2>
+                    <h2 style="color: #ffffff;">Prof. Dr. Alexander Nexus</h2>
                     <small style="color: #aaa; text-transform: uppercase; letter-spacing: 1px;">Head of School</small>
                     <div class="quote">
                         "Di Elysium, kami tidak bertanya 'ingin jadi apa kamu nanti?', tetapi 'masalah apa yang ingin kamu selesaikan di masa depan?'. Kami menyiapkan solusi untuk dunia yang belum tercipta."
