@@ -65,9 +65,9 @@ body {
 .logo-text {
     display: flex;
     flex-direction: column;
+    color: #00d2ff;
     font-weight: 700;
     line-height: 1.1;
-    color: #00d2ff;
 }
 
 .logo-text small {
