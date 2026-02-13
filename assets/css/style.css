@@ -879,35 +879,46 @@ footer {
     }
 }
 
-/* --- PARTNERS MARQUEE SECTION --- */
+/* --- PARTNERS MARQUEE SECTION (GLASS & COLOR) --- */
 .partners-section {
-    padding: 50px 0;
-    background: #0b0f19; /* Latar gelap */
-    overflow: hidden; /* Sembunyikan scrollbar horizontal */
-    border-top: 1px solid rgba(255,255,255,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 60px 0;
+    /* Background transparan agar menyatu dengan body */
+    background: transparent; 
+    position: relative;
+    z-index: 10;
 }
 
 .logos-slider {
-    background: rgba(255, 255, 255, 0.02); /* Sedikit terang */
+    /* EFEK GLASSMORPHISM (KACA) */
+    background: rgba(255, 255, 255, 0.03); /* Putih sangat transparan */
+    backdrop-filter: blur(15px);           /* Efek blur di belakang kaca */
+    -webkit-backdrop-filter: blur(15px);   /* Support Safari */
+    
+    border-top: 1px solid rgba(255, 255, 255, 0.1);    /* Garis tipis atas */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis tipis bawah */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);         /* Bayangan halus */
+    
     padding: 30px 0;
     white-space: nowrap;
     position: relative;
+    overflow: hidden;
 }
 
-/* Efek Fading di Kiri dan Kanan (Opsional, biar makin estetik) */
+/* Efek Fade Kiri & Kanan (Opsional: Agar logo tidak putus mendadak) */
 .logos-slider::before,
 .logos-slider::after {
     content: "";
     position: absolute;
     top: 0;
-    width: 150px;
+    width: 100px;
     height: 100%;
     z-index: 2;
+    pointer-events: none;
 }
 
 .logos-slider::before {
     left: 0;
+    /* Gradasi dari warna background body ke transparan */
     background: linear-gradient(to right, #0b0f19, transparent);
 }
 
@@ -919,12 +930,14 @@ footer {
 .logos-slide-track {
     display: flex;
     align-items: center;
-    width: calc(250px * 14); /* 250px (lebar slide) x Jumlah Total Logo (Asli + Duplikat) */
-    animation: scrollLogos 30s linear infinite;
+    /* Lebar total = (Lebar Slide + Gap) x Jumlah Logo Total (Asli + Duplikat) */
+    /* Contoh: (200px) * 14 logo = 2800px */
+    width: calc(200px * 14); 
+    animation: scrollLogos 25s linear infinite;
 }
 
 .slide {
-    width: 250px; /* Lebar area per logo */
+    width: 200px;  /* Lebar area per logo */
     padding: 0 30px; /* Jarak antar logo */
     display: flex;
     align-items: center;
@@ -933,16 +946,23 @@ footer {
 
 .slide img {
     max-width: 100%;
-    height: auto;
-    filter: grayscale(100%) opacity(0.5); /* Bikin logo abu-abu & agak transparan */
-    transition: 0.3s;
+    max-height: 80px; /* Batasi tinggi agar rapi */
+    object-fit: contain;
+    
+    /* LOGO BERWARNA (Hapus filter grayscale) */
+    filter: none; 
+    opacity: 1; 
+    
+    transition: transform 0.3s ease;
     cursor: pointer;
+    /* Sedikit drop shadow agar logo 'pop up' di atas kaca */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
-/* Saat di-hover, logo jadi berwarna & terang */
+/* Efek saat logo disentuh/hover */
 .slide img:hover {
-    filter: grayscale(0%) opacity(1);
-    transform: scale(1.1);
+    transform: scale(1.15); /* Membesar sedikit */
+    filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.6)); /* Glow biru */
 }
 
 /* Animasi Berjalan */
@@ -951,25 +971,29 @@ footer {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-250px * 7)); /* Geser sebanyak jumlah logo ASLI (7) */
+        /* Geser sejauh: -(Lebar Slide * Jumlah Logo Asli) */
+        /* Contoh: -(200px * 7) = -1400px */
+        transform: translateX(calc(-200px * 7)); 
     }
 }
 
 /* Responsive Mobile */
 @media (max-width: 768px) {
-    .logos-slider::before, .logos-slider::after {
-        width: 50px; /* Perkecil efek fade di HP */
-    }
     .slide {
-        width: 150px; /* Perkecil ukuran logo di HP */
+        width: 150px; /* Perkecil di HP */
         padding: 0 15px;
     }
     .logos-slide-track {
         width: calc(150px * 14);
-        animation: scrollLogos 20s linear infinite; /* Sedikit lebih cepat di HP */
+        animation: scrollLogos 15s linear infinite; /* Lebih cepat di HP */
     }
     @keyframes scrollLogos {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-150px * 7)); }
+    }
+    
+    /* Hilangkan efek fade samping di HP agar lebih luas */
+    .logos-slider::before, .logos-slider::after {
+        display: none;
     }
 }
